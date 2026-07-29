@@ -15,6 +15,8 @@ const gradeMark = (mark) => {
 
 // This function Generate Studnet report card:
 const generateReportCard = (student) => {
+    if (typeof student == "object" && !Array.isArray(student)) return "invalid";
+    if (typeof student.bangla !== "number" || typeof student.english !== "number" || typeof student.mark !== "number") return "invalid";
     let totalMarks = student.bangla + student.english + student.math;
     let averateMark = totalMarks / 3;
 
@@ -24,4 +26,5 @@ const generateReportCard = (student) => {
 
 // tast Case:
 const student = { name: 'Ayan', bangla: 78, english: 85, math: 92 }
+let st = [4, 5, 6];
 console.log(generateReportCard(student))         // Report: { name:'Ayan', total:255, average:85, grade:'A' }
